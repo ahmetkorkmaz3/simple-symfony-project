@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title|upper }}{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        Users
+                    </div>
+                    <div class="card-body">
+                        <table id="users" class="display">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready( function () {
+            $('#users').DataTable();
+        } );
+    </script>
+{% endblock %}
